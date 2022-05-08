@@ -11,14 +11,18 @@ using System.Runtime.InteropServices;
 
 namespace NativeMethods.Interop;
 
-public static class Kernel32
+/// <summary>
+/// Windows GDI+ exposes a flat API that consists of about 600 functions, which are implemented in Gdiplus.dll and declared in Gdiplusflat.h.
+/// </summary>
+public static class Gdip
 {
     /// <summary>
-    /// Copies a block of memory from one location to another.
+    /// The Bitmap::GetHICON method creates an icon from this Bitmap object.
     /// </summary>
-    /// <param name="destination">A pointer to the starting address of the copied block's destination.</param>
-    /// <param name="source">A pointer to the starting address of the block of memory to copy.</param>
-    /// <param name="length">The size of the block of memory to copy, in bytes.</param>
-    [DllImport(Libraries.Kernel32, SetLastError = false, CharSet = CharSet.Auto)]
-    public static extern void CopyMemory([In] IntPtr destination, [In] IntPtr source, [In] uint length);
+    /// <param name="nativeBitmap"></param>
+    /// <param name="hicon"></param>
+    /// <returns>GpStatus HRESULT</returns>
+    [DllImport(Libraries.Gdip, CharSet = CharSet.Auto)]
+    public static extern int GdipCreateHICONFromBitmap(IntPtr nativeBitmap, out IntPtr hicon);
 }
+

@@ -2,7 +2,7 @@
 <Project>
 
   <PropertyGroup>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <PackageVersion>$(Version)</PackageVersion>
   </PropertyGroup>
 
@@ -19,6 +19,13 @@
     <PackageProjectUrl>https://github.com/lepoco/nativemethods</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lepoco/nativemethods</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\branding\nativemethods-256.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <PropertyGroup>
     <LangVersion>10.0</LangVersion>

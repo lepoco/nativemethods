@@ -21,6 +21,111 @@ namespace NativeMethods.Interop;
 public static class User32
 {
     /// <summary>
+    /// WM_NCHITTEST and MOUSEHOOKSTRUCT Mouse Position Codes
+    /// </summary>
+    /* TODO: Fix HT NCHIT TEST
+#define HTERROR             (-2)
+#define HTTRANSPARENT       (-1)
+#define HTNOWHERE           0
+#define HTCLIENT            1
+#define HTCAPTION           2
+#define HTSYSMENU           3
+#define HTGROWBOX           4
+#define HTSIZE              HTGROWBOX
+#define HTMENU              5
+#define HTHSCROLL           6
+#define HTVSCROLL           7
+#define HTMINBUTTON         8
+#define HTMAXBUTTON         9
+#define HTLEFT              10
+#define HTRIGHT             11
+#define HTTOP               12
+#define HTTOPLEFT           13
+#define HTTOPRIGHT          14
+#define HTBOTTOM            15
+#define HTBOTTOMLEFT        16
+#define HTBOTTOMRIGHT       17
+#define HTBORDER            18
+#define HTREDUCE            HTMINBUTTON
+#define HTZOOM              HTMAXBUTTON
+#define HTSIZEFIRST         HTLEFT
+#define HTSIZELAST          HTBOTTOMRIGHT
+#if(WINVER >= 0x0400)
+#define HTOBJECT            19
+#define HTCLOSE             20
+#define HTHELP              21
+     */
+    public enum WM_NCHITTEST
+    {
+        /// <summary>
+        /// On the screen background or on a dividing line between windows.
+        /// </summary>
+        NOWHERE = 0,
+
+        /// <summary>
+        /// In a client area.
+        /// </summary>
+        CLIENT = 1,
+
+        /// <summary>
+        /// In a title bar.
+        /// </summary>
+        CAPTION = 2,
+
+        /// <summary>
+        /// In a window menu or in a Close button in a child window.
+        /// </summary>
+        SYSMENU = 3,
+
+        /// <summary>
+        /// In a size box (same as HTSIZE).
+        /// </summary>
+        GROWBOX = 4,
+        //SIZE = 4,
+
+        /// <summary>
+        /// In a menu.
+        /// </summary>
+        MENU = 5,
+
+        /// <summary>
+        /// In a horizontal scroll bar.
+        /// </summary>
+        HSCROLL = 6,
+
+        /// <summary>
+        /// In the vertical scroll bar.
+        /// </summary>
+        VSCROLL = 7,
+
+        /// <summary>
+        /// In a Minimize button.
+        /// </summary>
+        MINBUTTON = 8,
+
+        /// <summary>
+        /// In a Maximize button.
+        /// </summary>
+        MAXBUTTON = 9,
+        // ZOOM = 9,
+
+        /// <summary>
+        /// In the left border of a resizable window (the user can click the mouse to resize the window horizontally).
+        /// </summary>
+        LEFT = 10,
+
+        /// <summary>
+        /// In the right border of a resizable window (the user can click the mouse to resize the window horizontally).
+        /// </summary>
+        RIGHT = 11,
+
+        /// <summary>
+        /// In the upper-horizontal border of a window.
+        /// </summary>
+        TOP = 12,
+    }
+
+    /// <summary>
     /// Window long flags.
     /// <para><see href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowlonga"/></para>
     /// </summary>

@@ -62,7 +62,6 @@ public static class UxTheme
         /// <summary>
         /// Prevents the window caption from being drawn.
         /// </summary>
-
         NODRAWCAPTION = 0x00000001,
 
         /// <summary>
@@ -114,7 +113,7 @@ public static class UxTheme
     /// <summary>
     /// Sets attributes to control how visual styles are applied to a specified window.
     /// </summary>
-    /// <param name="hwnd">
+    /// <param name="hWnd">
     /// Handle to a window to apply changes to.
     /// </param>
     /// <param name="eAttribute">
@@ -131,29 +130,33 @@ public static class UxTheme
     /// Specifies the size, in bytes, of the data pointed to by pvAttribute.
     /// </param>
     [DllImport(Libraries.UxTheme, PreserveSig = false)]
-    public static extern void SetWindowThemeAttribute([In] IntPtr hwnd, [In] WINDOWTHEMEATTRIBUTETYPE eAttribute, [In] ref WTA_OPTIONS pvAttribute, [In] uint cbAttribute);
+    public static extern void SetWindowThemeAttribute([In] IntPtr hWnd, [In] WINDOWTHEMEATTRIBUTETYPE eAttribute, [In] ref WTA_OPTIONS pvAttribute, [In] uint cbAttribute);
 
+    /// <summary>
+    /// Tests if a visual style for the current application is active.
+    /// </summary>
+    /// <returns><see langword="true"/> if a visual style is enabled, and windows with visual styles applied should call OpenThemeData to start using theme drawing services.</returns>
     [DllImport(Libraries.UxTheme)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool IsThemeActive();
 
     /// <summary>
-    /// 
+    /// Retrieves the name of the current visual style, and optionally retrieves the color scheme name and size name.
     /// </summary>
-    /// <param name="pszThemeFileName"></param>
-    /// <param name="dwMaxNameChars"></param>
-    /// <param name="pszColorBuff"></param>
-    /// <param name="cchMaxColorChars"></param>
-    /// <param name="pszSizeBuff"></param>
-    /// <param name="cchMaxSizeChars"></param>
+    /// <param name="pszThemeFileName">Pointer to a string that receives the theme path and file name.</param>
+    /// <param name="dwMaxNameChars">Value of type int that contains the maximum number of characters allowed in the theme file name.</param>
+    /// <param name="pszColorBuff">Pointer to a string that receives the color scheme name. This parameter may be set to NULL.</param>
+    /// <param name="cchMaxColorChars">Value of type int that contains the maximum number of characters allowed in the color scheme name.</param>
+    /// <param name="pszSizeBuff">Pointer to a string that receives the size name. This parameter may be set to NULL.</param>
+    /// <param name="cchMaxSizeChars">Value of type int that contains the maximum number of characters allowed in the size name.</param>
     /// <returns>HRESULT</returns>
-    [DllImport(Libraries.UxTheme, EntryPoint = "GetCurrentThemeName", CharSet = CharSet.Unicode)]
+    [DllImport(Libraries.UxTheme, CharSet = CharSet.Unicode)]
     private static extern int GetCurrentThemeName(
-        StringBuilder pszThemeFileName,
-        int dwMaxNameChars,
-        StringBuilder pszColorBuff,
-        int cchMaxColorChars,
-        StringBuilder pszSizeBuff,
-        int cchMaxSizeChars);
+        [Out] StringBuilder pszThemeFileName,
+        [In] int dwMaxNameChars,
+        [Out] StringBuilder pszColorBuff,
+        [In] int cchMaxColorChars,
+        [Out] StringBuilder pszSizeBuff,
+        [In] int cchMaxSizeChars);
 }
 
