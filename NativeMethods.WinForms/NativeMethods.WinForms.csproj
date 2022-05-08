@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.1.3" />
+
+  <PropertyGroup>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>NativeMethods.WinForms</RootNamespace>
+    <AssemblyName>NativeMethods.WinForms</AssemblyName>
+    <PackageId>NativeMethods.WinForms</PackageId>
+    <Description>Set of tools and ready-made methods that are wrappers over the core functionalities of Windows, such as User32, Shell32 or Kernel32. Along with special add-ons for Windows Forms.</Description>
+    <PackageTags>windows native methods interop reflection winforms forms win32 winapi win user32 shell32 kernel32 libraries lepo lepoco</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NativeMethods\NativeMethods.csproj" />
+  </ItemGroup>
+
+</Project>

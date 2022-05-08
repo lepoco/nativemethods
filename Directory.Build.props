@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <Version>0.0.1</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net48;net47;net46</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>lepo.co</Authors>
+    <Company>lepo.co</Company>
+    <Copyright>Copyright (C) 2022 Leszek Pomianowski</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicense>https://raw.githubusercontent.com/lepoco/nativemethods/main/LICENSE</PackageLicense>
+    <PackageProjectUrl>https://github.com/lepoco/nativemethods</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lepoco/nativemethods</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>10.0</LangVersion>
+    <OutputType>Library</OutputType>
+    <Deterministic>true</Deterministic>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+</Project>
