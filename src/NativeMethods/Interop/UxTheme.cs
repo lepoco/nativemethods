@@ -8,6 +8,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace NativeMethods.Interop;
 
@@ -15,6 +16,32 @@ namespace NativeMethods.Interop;
 // ReSharper disable InconsistentNaming
 public static class UxTheme
 {
+    /// <summary>
+    /// Returned by the GetThemeMargins function to define the margins of windows that have visual styles applied.
+    /// </summary>
+    public struct MARGINS
+    {
+        /// <summary>
+        /// Width of left border that retains its size.
+        /// </summary>
+        public int cxLeftWidth;
+
+        ///<summary>
+        /// Width of right border that retains its size.
+        /// </summary>
+        public int cxRightWidth;
+
+        /// <summary>
+        /// Height of top border that retains its size.
+        /// </summary>
+        public int cyTopHeight;
+
+        /// <summary>
+        /// Height of bottom border that retains its size.
+        /// </summary>
+        public int cyBottomHeight;
+    }
+
     /// <summary>
     /// Specifies the type of visual style attribute to set on a window.
     /// </summary>
@@ -105,5 +132,28 @@ public static class UxTheme
     /// </param>
     [DllImport(Libraries.UxTheme, PreserveSig = false)]
     public static extern void SetWindowThemeAttribute([In] IntPtr hwnd, [In] WINDOWTHEMEATTRIBUTETYPE eAttribute, [In] ref WTA_OPTIONS pvAttribute, [In] uint cbAttribute);
+
+    [DllImport(Libraries.UxTheme)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool IsThemeActive();
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pszThemeFileName"></param>
+    /// <param name="dwMaxNameChars"></param>
+    /// <param name="pszColorBuff"></param>
+    /// <param name="cchMaxColorChars"></param>
+    /// <param name="pszSizeBuff"></param>
+    /// <param name="cchMaxSizeChars"></param>
+    /// <returns>HRESULT</returns>
+    [DllImport(Libraries.UxTheme, EntryPoint = "GetCurrentThemeName", CharSet = CharSet.Unicode)]
+    private static extern int GetCurrentThemeName(
+        StringBuilder pszThemeFileName,
+        int dwMaxNameChars,
+        StringBuilder pszColorBuff,
+        int cchMaxColorChars,
+        StringBuilder pszSizeBuff,
+        int cchMaxSizeChars);
 }
 
