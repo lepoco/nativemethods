@@ -2,11 +2,12 @@
 <Project>
 
   <PropertyGroup>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <PackageVersion>$(Version)</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup>
+  <!-- net7.0-windows; -->
     <TargetFrameworks>net6.0-windows;net5.0-windows;netcoreapp3.1;net48;net47;net46</TargetFrameworks>
   </PropertyGroup>
 
@@ -20,6 +21,9 @@
     <RepositoryUrl>https://github.com/lepoco/nativemethods</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageIcon>nativemethods-256.png</PackageIcon>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\branding\nativemethods-256.png">
       <Pack>True</Pack>

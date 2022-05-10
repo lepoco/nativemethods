@@ -6,8 +6,7 @@
     <AssemblyName>NativeMethods</AssemblyName>
     <PackageId>NativeMethods</PackageId>
     <Description>Set of tools and ready-made methods that are wrappers over the core functionalities of Windows, such as User32, Shell32 or Kernel32.</Description>
-    <PackageTags>windows native methods interop reflection win32 winapi win user32 shell32 kernel32 libraries lepo lepoco</PackageTags>
-    <PackageIcon>nativemethods-256.png</PackageIcon>
+    <PackageTags>windows native methods interop reflection pinvoke invoke win32 winapi win user32 shell32 kernel32 libraries lepo lepoco</PackageTags>
   </PropertyGroup>
 
 </Project>

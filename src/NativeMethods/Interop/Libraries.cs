@@ -8,7 +8,7 @@
 
 namespace NativeMethods.Interop;
 
-public static class Libraries
+internal static class Libraries
 {
     public const string Advapi32 = "advapi32.dll";
     public const string BCrypt = "BCrypt.dll";

@@ -8,6 +8,8 @@
 
 using System;
 using System.Runtime.InteropServices;
+using NativeMethods.Attributes;
+using NativeMethods.WinDef;
 
 // Windows Kits\10\Include\10.0.22000.0\um\WinUser.h
 
@@ -18,6 +20,7 @@ namespace NativeMethods.Interop;
 /// </summary>
 // ReSharper disable IdentifierTypo
 // ReSharper disable InconsistentNaming
+[UnmanagedComponent]
 public static class User32
 {
     /// <summary>
@@ -654,9 +657,9 @@ public static class User32
         public int length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
         public int flags;
         public SW showCmd;
-        public WinDef.POINT ptMinPosition;
-        public WinDef.POINT ptMaxPosition;
-        public WinDef.RECT rcNormalPosition;
+        public POINT ptMinPosition;
+        public POINT ptMaxPosition;
+        public RECT rcNormalPosition;
     }
 
     /// <summary>
@@ -762,7 +765,7 @@ public static class User32
     /// <returns>If the function succeeds, the return value is nonzero.</returns>
     [DllImport(Libraries.User32, CharSet = CharSet.Auto, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool AdjustWindowRectEx([In] ref WinDef.RECT lpRect, [In] WS dwStyle,
+    public static extern bool AdjustWindowRectEx([In] ref RECT lpRect, [In] WS dwStyle,
         [In][MarshalAs(UnmanagedType.Bool)] bool bMenu, [In] WS_EX dwExStyle);
 
     /// <summary>
@@ -771,7 +774,7 @@ public static class User32
     /// </summary>
     /// <param name="message">The message to add to or remove from the filter.</param>
     /// <param name="dwFlag">The action to be performed. One of the following values.</param>
-    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>. To get extended error information, call GetLastError.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>. To get extended error information, call <see cref="Kernel32.GetLastError"/>.</returns>
     [DllImport(Libraries.User32, CharSet = CharSet.Auto, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool ChangeWindowMessageFilter([In] WM message, [In] MSGFLT dwFlag);
@@ -783,7 +786,7 @@ public static class User32
     /// <param name="message">The message that the message filter allows through or blocks.</param>
     /// <param name="action">The action to be performed.</param>
     /// <param name="pChangeFilterStruct">Optional pointer to a <see cref="CHANGEFILTERSTRUCT"/> structure.</param>
-    /// <returns>If the function succeeds, it returns <see langword="true"/>; otherwise, it returns <see langword="false"/>. To get extended error information, call GetLastError.</returns>
+    /// <returns>If the function succeeds, it returns <see langword="true"/>; otherwise, it returns <see langword="false"/>. To get extended error information, call <see cref="Kernel32.GetLastError"/>.</returns>
     [DllImport(Libraries.User32, CharSet = CharSet.Auto, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool ChangeWindowMessageFilterEx([In] IntPtr hWnd, [In] WM message, [In] MSGFLT action,
@@ -1179,7 +1182,7 @@ public static class User32
     /// <returns>If the function succeeds, the return value is nonzero.</returns>
     [DllImport(Libraries.User32, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool GetWindowRect([In] IntPtr hWnd, [Out] out WinDef.RECT lpRect);
+    public static extern bool GetWindowRect([In] IntPtr hWnd, [Out] out RECT lpRect);
 
     /// <summary>
     /// Determines the visibility state of the specified window.
@@ -1257,11 +1260,11 @@ public static class User32
     /// <summary>
     /// Retrieves the position of the mouse cursor, in screen coordinates.
     /// </summary>
-    /// <param name="lpPoint">A pointer to a <see cref="WinDef.POINT"/> structure that receives the screen coordinates of the cursor.</param>
-    /// <returns>Returns nonzero if successful or zero otherwise. To get extended error information, call GetLastError.</returns>
+    /// <param name="lpPoint">A pointer to a <see cref="POINT"/> structure that receives the screen coordinates of the cursor.</param>
+    /// <returns>Returns nonzero if successful or zero otherwise. To get extended error information, call <see cref="Kernel32.GetLastError"/>.</returns>
     [DllImport(Libraries.User32, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool GetCursorPos([Out] out WinDef.POINT lpPoint);
+    public static extern bool GetCursorPos([Out] out POINT lpPoint);
 
     /// <summary>
     /// Sets various information regarding DWM window attributes.

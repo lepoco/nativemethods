@@ -12,6 +12,9 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace NativeMethods.Interop;
 
+/// <summary>
+/// The Windows UI provides users with access to a wide variety of objects necessary to run applications and manage the operating system.
+/// </summary>
 // ReSharper disable IdentifierTypo
 // ReSharper disable InconsistentNaming
 public static class Shell32
@@ -108,7 +111,8 @@ public static class Shell32
 
     [DllImport(Libraries.Shell32, PreserveSig = false)]
     public static extern void SHGetItemFromDataObject(IDataObject pdtobj, DOGIF dwFlags, [In] ref Guid riid,
-        [Out, MarshalAs(UnmanagedType.Interface)] out object ppv);
+        [Out, MarshalAs(UnmanagedType.Interface)]
+        out object ppv);
 
     [DllImport(Libraries.Shell32)]
     public static extern int SHCreateItemFromParsingName([MarshalAs(UnmanagedType.LPWStr)] string pszPath, IBindCtx pbc,
@@ -116,7 +120,7 @@ public static class Shell32
 
     [DllImport(Libraries.Shell32)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static extern bool Shell_NotifyIcon(NIM dwMessage, [In] NOTIFYICONDATA lpdata);
+    public static extern bool Shell_NotifyIcon([In] NIM dwMessage, [In] NOTIFYICONDATA lpdata);
 
     /// <summary>
     /// Sets the User Model AppID for the current process, enabling Windows to retrieve this ID
